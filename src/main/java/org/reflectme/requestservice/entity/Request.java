@@ -2,6 +2,7 @@ package org.reflectme.requestservice.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 
@@ -26,8 +27,9 @@ public class Request {
     private String comment;
 
     @Column
-    private boolean active;
+    private boolean active = true;
 
     @Column(name = "creation_timestamp")
+    @CreationTimestamp
     private Timestamp creationTimestamp;
 }

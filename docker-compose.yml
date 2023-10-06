@@ -3,6 +3,8 @@ services:
     build:
       context: .
     container_name: request-service
+    environment:
+      - dima_service_password=$2y$06$7jhHYfWQSoGaCJxYwauGeeh37Q8cRxVYpJ9wXCyWbDIbj9PNqp0kK
     ports:
       - "8080:8080"
     depends_on:

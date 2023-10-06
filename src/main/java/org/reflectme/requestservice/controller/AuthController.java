@@ -2,6 +2,7 @@ package org.reflectme.requestservice.controller;
 
 import lombok.AllArgsConstructor;
 import org.reflectme.requestservice.security.AuthenticationService;
+import org.reflectme.requestservice.security.JwtService;
 import org.reflectme.requestservice.util.AuthenticationRequest;
 import org.reflectme.requestservice.util.AuthenticationResponse;
 import org.reflectme.requestservice.util.UserData;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class AuthController {
     private final AuthenticationService service;
-    private final org.reflectme.requestservice.security.config.JwtService jwtService;
+    private final JwtService jwtService;
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> auth(
@@ -25,15 +26,15 @@ public class AuthController {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
-    @PostMapping("/generate-token")
-    public ResponseEntity<String> token(
-            @RequestBody AuthenticationRequest request
-    ) {
-        return ResponseEntity.ok(jwtService.generateToken(
-                new UserData(
-                        request.getName(),
-                        request.getPassword()
-                )
-        ));
-    }
+//    @PostMapping("/generate-token")
+//    public ResponseEntity<String> token(
+//            @RequestBody AuthenticationRequest request
+//    ) {
+//        return ResponseEntity.ok(jwtService.generateToken(
+//                new UserData(
+//                        request.getName(),
+//                        request.getPassword()
+//                )
+//        ));
+//    }
 }

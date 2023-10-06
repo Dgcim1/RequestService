@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
     private final UserDetailsService envService;
     private final AuthenticationManager authenticationManager;
-    private final org.reflectme.requestservice.security.config.JwtService jwtService;
+    private final JwtService jwtService;
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

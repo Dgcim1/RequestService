@@ -1,0 +1,19 @@
+services:
+  server:
+    build:
+      context: .
+    container_name: request-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      POSTGRES_DB: "request"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "qwe"
+      POSTGRES_ROOT_PASSWORD: "qwe"
+    ports:
+      - "5432:5432"

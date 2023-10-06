@@ -1,4 +1,4 @@
-package org.reflectme.requestservice.security.config;
+package org.reflectme.requestservice.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

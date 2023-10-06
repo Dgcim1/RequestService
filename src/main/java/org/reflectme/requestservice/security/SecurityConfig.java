@@ -1,6 +1,5 @@
 package org.reflectme.requestservice.security;
 
-import jakarta.servlet.Filter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

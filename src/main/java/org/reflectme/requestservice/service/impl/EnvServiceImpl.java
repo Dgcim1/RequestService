@@ -3,9 +3,7 @@ package org.reflectme.requestservice.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.reflectme.requestservice.util.UserData;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service

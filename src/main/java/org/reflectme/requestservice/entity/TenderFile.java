@@ -1,7 +1,10 @@
 package org.reflectme.requestservice.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
@@ -11,28 +14,24 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "requests")
-public class Request {
+@Table(name = "tender_file")
+public class TenderFile {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "tender_id")
+    private Tender tender;
+
     @Column(name = "name")
     private String name;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "comment", length = 16384)
-    private String comment;
-
-    @Column
-    private boolean active = true;
 
     @Column(name = "creation_timestamp")
     @CreationTimestamp
     private Timestamp creationTimestamp;
 
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "content")
+    @Basic
+    private byte[] content;
 }

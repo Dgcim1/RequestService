@@ -1,18 +1,22 @@
 package org.reflectme.requestservice.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "requests")
-public class Request {
+@Table(name = "tender")
+public class Tender {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -35,4 +39,10 @@ public class Request {
 
     @Column(name = "phone")
     private String phone;
+
+    @Column(name = "law")
+    private String law;
+
+    @OneToMany(mappedBy = "tender", fetch = FetchType.EAGER)
+    private Set<TenderFile> files;
 }

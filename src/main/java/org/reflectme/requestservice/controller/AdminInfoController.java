@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/request")
 @AllArgsConstructor
 public class AdminInfoController {
     private final RequestService requestService;
@@ -27,7 +27,7 @@ public class AdminInfoController {
         );
     }
 
-    @PutMapping("/request/close/{id}")
+    @PutMapping("/close/{id}")
     public ResponseEntity<Request> closeRequest(
             @PathVariable Long id
     ) {
@@ -39,5 +39,4 @@ public class AdminInfoController {
                 )
         );
     }
-
 }

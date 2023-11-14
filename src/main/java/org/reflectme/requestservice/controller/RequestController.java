@@ -23,6 +23,7 @@ public class RequestController {
                                 .name(request.getName())
                                 .comment(request.getComment())
                                 .active(true)
+                                .phone(request.getPhone())
                                 .build()
                 )
         );

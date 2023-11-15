@@ -3,6 +3,8 @@ services:
     build:
       context: .
     container_name: request-service
+    volumes:
+      - ./data:/var/lib/postgresql/data
     environment:
       - dima_service_password=$2y$06$7jhHYfWQSoGaCJxYwauGeeh37Q8cRxVYpJ9wXCyWbDIbj9PNqp0kK
     ports:

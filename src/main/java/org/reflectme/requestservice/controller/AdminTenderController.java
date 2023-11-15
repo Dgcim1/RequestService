@@ -2,7 +2,7 @@ package org.reflectme.requestservice.controller;
 
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.ArrayUtils;
-import org.reflectme.requestservice.dto.TenderDTO;
+import org.reflectme.requestservice.dto.TenderResponse;
 import org.reflectme.requestservice.service.TenderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +19,12 @@ import java.util.List;
 public class AdminTenderController {
     private final TenderService tenderService;
     @GetMapping("/active")
-    public ResponseEntity<List<TenderDTO>> getActiveRequests() {
+    public ResponseEntity<List<TenderResponse>> getActiveRequests() {
         return ResponseEntity.ok(tenderService.getActiveRequests());
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<TenderDTO>> getAllRequests() {
+    public ResponseEntity<List<TenderResponse>> getAllRequests() {
         return ResponseEntity.ok(tenderService.getAllRequests());
     }
 

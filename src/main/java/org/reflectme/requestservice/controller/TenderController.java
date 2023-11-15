@@ -2,7 +2,7 @@ package org.reflectme.requestservice.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.RequiredArgsConstructor;
-import org.reflectme.requestservice.dto.TenderDTO;
+import org.reflectme.requestservice.dto.TenderRequest;
 import org.reflectme.requestservice.service.TenderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class TenderController {
     private final TenderService tenderService;
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void saveTender(@RequestBody TenderDTO body) {
+    public void saveTender(@RequestBody TenderRequest body) {
         tenderService.save(body);
     }
 

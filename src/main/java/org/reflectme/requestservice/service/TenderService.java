@@ -3,7 +3,8 @@ package org.reflectme.requestservice.service;
 import lombok.RequiredArgsConstructor;
 import org.reflectme.requestservice.dao.TenderFileRepository;
 import org.reflectme.requestservice.dao.TenderRepository;
-import org.reflectme.requestservice.dto.TenderDTO;
+import org.reflectme.requestservice.dto.TenderRequest;
+import org.reflectme.requestservice.dto.TenderResponse;
 import org.reflectme.requestservice.entity.Tender;
 import org.reflectme.requestservice.entity.TenderFile;
 import org.springframework.stereotype.Service;
@@ -20,14 +21,14 @@ import java.util.Optional;
 public class TenderService {
     private final TenderRepository tenderRepository;
     private final TenderFileRepository tenderFileRepository;
-    public List<TenderDTO> getActiveRequests() {
+    public List<TenderResponse> getActiveRequests() {
         return tenderRepository.findAllByActiveIsTrue()
                 .stream()
                 .map(this::map)
                 .toList();
     }
 
-    public List<TenderDTO> getAllRequests() {
+    public List<TenderResponse> getAllRequests() {
         return tenderRepository.findAll()
                 .stream()
                 .map(this::map)
@@ -51,7 +52,7 @@ public class TenderService {
         );
     }
 
-    public void save(TenderDTO body) {
+    public void save(TenderRequest body) {
         var tender = Tender
                 .builder()
                 .name(body.name())
@@ -86,13 +87,14 @@ public class TenderService {
         return  tenderFile.getId();
     }
 
-    private TenderDTO map(Tender tender) {
-        return new TenderDTO(
+    private TenderResponse map(Tender tender) {
+        return new TenderResponse(
                 tender.getName(),
                 tender.getEmail(),
                 tender.getPhone(),
                 tender.getLaw(),
                 tender.getComment(),
+                tender.getCreationTimestamp(),
                 tenderFileRepository.customFindAllByTenderId(tender.getId()).stream().map(TenderFile::getId).toList()
         );
     }
